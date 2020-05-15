@@ -2,7 +2,6 @@
 #define CAMERA_H
 
 #include "model.h"
-
 #include "draw.h"
 
 #define MOVE_SPEED 10.0 //BIGGER IS FASTER
