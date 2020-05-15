@@ -260,6 +260,9 @@ void rotation_of_objects(Rotate *rotate) {
 
 void movement_of_objects(Move *move) {
 
+    double divide = 1.4;
+    double increment = 10;
+
     if (move->mercury.x == 0)
         move->mercury.x = defaultX.mercury;
     if (move->venus.x == 0)
@@ -280,81 +283,80 @@ void movement_of_objects(Move *move) {
 
     if (action.move_mercury == TRUE) {
 
-        degreeMercury += 0.1;
+        degreeMercury += increment;
         double angle = degree_to_radian(degreeMercury);
         move->mercury.x = cos(angle) * defaultX.mercury;
-        move->mercury.y = sin(angle) * (defaultX.mercury / 2);
+        move->mercury.y = sin(angle) * (defaultX.mercury / divide);
         move->mercury.z = 0;
 
     }
 
     if (action.move_venus == TRUE) {
 
-        degreeVenus += 0.09;
+        degreeVenus += increment/2;
         double angle = degree_to_radian(degreeVenus);
         move->venus.x = cos(angle) * defaultX.venus;
-        move->venus.y = sin(angle) * (defaultX.venus / 2);
+        move->venus.y = sin(angle) * (defaultX.venus / divide);
         move->venus.z = 0;
 
     }
 
     if (action.move_earth == TRUE) {
 
-        degreeEarth += 0.08;
+        degreeEarth += increment/4;
         double angle = degree_to_radian(degreeEarth);
         move->earth.x = cos(angle) * defaultX.earth;
-        move->earth.y = sin(angle) * (defaultX.earth / 2);
+        move->earth.y = sin(angle) * (defaultX.earth / divide);
         move->earth.z = 0;
 
     }
 
     if (action.move_mars == TRUE) {
 
-        degreeMars += 0.07;
+        degreeMars += increment/6;
         double angle = degree_to_radian(degreeMars);
         move->mars.x = cos(angle) * defaultX.mars;
-        move->mars.y = sin(angle) * (defaultX.mars / 2);
+        move->mars.y = sin(angle) * (defaultX.mars / divide);
         move->mars.z = 0;
 
     }
 
     if (action.move_jupiter == TRUE) {
 
-        degreeJupiter += 0.06;
+        degreeJupiter += increment/12;
         double angle = degree_to_radian(degreeJupiter);
         move->jupiter.x = cos(angle) * defaultX.jupiter;
-        move->jupiter.y = sin(angle) * (defaultX.jupiter / 2);
+        move->jupiter.y = sin(angle) * (defaultX.jupiter / divide);
         move->jupiter.z = 0;
 
     }
 
     if (action.move_saturn == TRUE) {
 
-        degreeSaturn += 0.05;
+        degreeSaturn += increment/16;
         double angle = degree_to_radian(degreeSaturn);
         move->saturn.x = cos(angle) * defaultX.saturn;
-        move->saturn.y = sin(angle) * (defaultX.saturn / 2);
+        move->saturn.y = sin(angle) * (defaultX.saturn / divide);
         move->saturn.z = 0;
 
     }
 
     if (action.move_uranus == TRUE) {
 
-        degreeUranus += 0.04;
+        degreeUranus += increment/20;
         double angle = degree_to_radian(degreeUranus);
         move->uranus.x = cos(angle) * defaultX.uranus;
-        move->uranus.y = sin(angle) * (defaultX.uranus / 2);
+        move->uranus.y = sin(angle) * (defaultX.uranus / divide);
         move->uranus.z = 0;
 
     }
 
     if (action.move_neptune == TRUE) {
 
-        degreeNeptune += 0.03;
+        degreeNeptune += increment/24;
         double angle = degree_to_radian(degreeNeptune);
-        move->neptune.x = cos(angle) * defaultX.neptune;
-        move->neptune.y = sin(angle) * (defaultX.neptune / 2);
-        move->neptune.z = 0;
+        move->neptune.x = cos(angle) * (defaultX.neptune);
+        move->neptune.y = sin(angle) * (defaultX.neptune / divide);
 
     }
 

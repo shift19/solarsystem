@@ -461,7 +461,7 @@ void scale_model(struct Model *model, double sx, double sy, double sz) {
 
 int load_model(const char *filename, Model *model) {
     FILE *obj_file = fopen(filename, "r");
-    printf("Load model '%s' ...\n", filename);
+    //printf("Load model '%s' ...\n", filename);
     if (obj_file == NULL) {
         printf("ERROR: Unable to open '%s' file!\n", filename);
         return FALSE;

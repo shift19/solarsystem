@@ -3,7 +3,7 @@
 
 #include "model.h"
 
-#define SKYBOX_SIZE 10000.0
+#define SKYBOX_SIZE 10000
 
 typedef struct Position {
     double x;

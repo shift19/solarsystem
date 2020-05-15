@@ -33,7 +33,6 @@ void set_view_point(const struct Camera *camera) {
 }
 
 void rotate_camera(struct Camera *camera, double horizontal, double vertical) {
-
     camera->pose.z += horizontal / CAMERA_SPEED;
     camera->pose.x += vertical / CAMERA_SPEED;
     if (camera->pose.z < 0) {
@@ -64,51 +63,45 @@ void rotate_camera(struct Camera *camera, double horizontal, double vertical) {
 }
 
 void move_camera_up(struct Camera *camera, double distance) {
-
-    camera->prev_position = camera->position;
-    camera->position.z += distance;
-
+    if (!(camera->position.z>SKYBOX_SIZE - 1000)) {
+           camera->prev_position = camera->position;
+           camera->position.z += distance;
+    }
 }
 
 void move_camera_down(struct Camera *camera, double distance) {
-
-    camera->prev_position = camera->position;
-    camera->position.z -= distance;
-
+    if (!(camera->position.z<-SKYBOX_SIZE + 1000)) {
+        camera->prev_position = camera->position;
+        camera->position.z -= distance;
+    }
 }
 
 void move_camera_backward(struct Camera *camera, double distance) {
-
-    camera->prev_position = camera->position;
-    double angle = degree_to_radian(camera->pose.z);
-    camera->position.x -= cos(angle) * distance;
-    camera->position.y -= sin(angle) * distance;
-
+        camera->prev_position = camera->position;
+        double angle = degree_to_radian(camera->pose.z);
+        camera->position.x -= cos(angle) * distance;
+        camera->position.y -= sin(angle) * distance;
 }
 
 void move_camera_forward(struct Camera *camera, double distance) {
-
-    camera->prev_position = camera->position;
-    double angle = degree_to_radian(camera->pose.z);
-    camera->position.x += cos(angle) * distance;
-    camera->position.y += sin(angle) * distance;
-
+        camera->prev_position = camera->position;
+        double angle = degree_to_radian(camera->pose.z);
+        camera->position.x += cos(angle) * distance;
+        camera->position.y += sin(angle) * distance;
 }
 
 void step_camera_right(struct Camera *camera, double distance) {
 
-    camera->prev_position = camera->position;
-    double angle = degree_to_radian(camera->pose.z + 90.0);
-    camera->position.x -= cos(angle) * distance;
-    camera->position.y -= sin(angle) * distance;
-
+        camera->prev_position = camera->position;
+        double angle = degree_to_radian(camera->pose.z + 90.0);
+        camera->position.x -= cos(angle) * distance;
+        camera->position.y -= sin(angle) * distance;
 }
 
 void step_camera_left(struct Camera *camera, double distance) {
 
-    camera->prev_position = camera->position;
-    double angle = degree_to_radian(camera->pose.z - 90.0);
-    camera->position.x -= cos(angle) * distance;
-    camera->position.y -= sin(angle) * distance;
-
+        camera->prev_position = camera->position;
+        double angle = degree_to_radian(camera->pose.z - 90.0);
+        camera->position.x -= cos(angle) * distance;
+        camera->position.y -= sin(angle) * distance;
 }
